@@ -6,7 +6,7 @@
    ========================================================= */
 
 // ---- BACKEND ADRESINI BURADAN DEGISTIR ----
-const API_BASE = "https://pirates-sega-makes-meetings.trycloudflare.com/api";
+const API_BASE = "http://91.98.232.83:8000/api";
 // --------------------------------------------
 
 const tg = window.Telegram?.WebApp;
