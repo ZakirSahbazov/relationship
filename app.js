@@ -6,7 +6,7 @@
    ========================================================= */
 
 // ---- BACKEND ADRESINI BURADAN DEGISTIR ----
-const API_BASE = "https://senin-backend-domainin.com/api";
+const API_BASE = "https://pirates-sega-makes-meetings.trycloudflare.com";
 // --------------------------------------------
 
 const tg = window.Telegram?.WebApp;
