@@ -1,0 +1,512 @@
+/* =========================================================
+   UYUM FALI — Tasarım Token'ları
+   Palet:
+     --bg          #2B0F18  (derin bordo/garnet)
+     --bg-soft     #3A1521  (kart zemini)
+     --accent      #FF6B6B  (mercan)
+     --accent-2    #FFB199  (açık şeftali, gradyan ucu)
+     --gold        #D4A85A  (yüzde / vurgu detay)
+     --ink         #FDF6F0  (krem metin)
+     --ink-dim     #C9A9A8  (ikincil metin, pembe-gri)
+   Tipografi:
+     Display -> Fraunces (oynak, sıcak, fal kartı hissi)
+     Body/UI -> Inter
+   ========================================================= */
+
+:root {
+  --bg: #2B0F18;
+  --bg-soft: #3A1521;
+  --bg-softer: #471A29;
+  --accent: #FF6B6B;
+  --accent-2: #FFB199;
+  --gold: #D4A85A;
+  --ink: #FDF6F0;
+  --ink-dim: #C9A9A8;
+  --border: rgba(253, 246, 240, 0.10);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --shadow-card: 0 20px 50px -20px rgba(0,0,0,0.55);
+}
+
+* { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 18% 0%, rgba(255,107,107,0.16), transparent 55%),
+    radial-gradient(circle at 90% 18%, rgba(212,168,90,0.10), transparent 45%);
+}
+
+.hidden { display: none !important; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input { font-family: inherit; }
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 0 18px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================== TOPBAR ===================== */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 2px 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-glyph {
+  color: var(--accent-2);
+  font-size: 18px;
+  transform: translateY(-1px);
+}
+
+.brand-text {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.me-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 8px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--ink-dim);
+  max-width: 140px;
+}
+
+.me-badge #meName {
+  color: var(--ink);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.me-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.18);
+}
+
+/* ===================== NAME GATE ===================== */
+.gate {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 60px;
+}
+
+.gate-card {
+  width: 100%;
+  text-align: center;
+  animation: rise 0.5s ease both;
+}
+
+.gate-eyebrow {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+
+.gate-title {
+  font-family: 'Fraunces', serif;
+  font-size: 34px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+
+.gate-sub {
+  color: var(--ink-dim);
+  font-size: 15px;
+  margin: 0 0 28px;
+}
+
+.gate-input {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 17px;
+  margin-bottom: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.gate-input::placeholder { color: var(--ink-dim); opacity: 0.7; }
+
+.gate-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.18);
+}
+
+.gate-error {
+  color: var(--accent-2);
+  font-size: 13px;
+  margin: 10px 0 0;
+  min-height: 16px;
+}
+
+/* ===================== BUTTONS ===================== */
+.btn {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #2B0F18;
+  box-shadow: 0 12px 30px -10px rgba(255,107,107,0.55);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.btn-large {
+  padding: 18px 20px;
+  font-size: 17px;
+}
+
+.btn-icon { font-size: 15px; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  margin-top: 18px;
+}
+
+/* ===================== MAIN ===================== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 8px;
+  animation: rise 0.45s ease both;
+}
+
+/* ---- Hero (davet karti) ---- */
+.hero-card {
+  background: linear-gradient(160deg, var(--bg-softer), var(--bg-soft));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 30px 24px 26px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(255,107,107,0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 12px;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.hero-sub {
+  color: var(--ink-dim);
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin: 0 0 22px;
+}
+
+/* ---- Reveal (fal acilma karti) ---- */
+.reveal-card {
+  background: linear-gradient(160deg, var(--bg-softer), var(--bg-soft));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  animation: rise 0.5s ease both;
+}
+
+.reveal-eyebrow {
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 14px;
+}
+
+.reveal-names {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.reveal-x {
+  color: var(--accent);
+  font-size: 15px;
+}
+
+.reveal-percent-wrap {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(253,246,240,0.08);
+  stroke-width: 12;
+}
+
+.ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 540.35;
+  stroke-dashoffset: 540.35;
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 0 10px rgba(255,107,107,0.55));
+}
+
+.reveal-percent {
+  position: absolute;
+  font-family: 'Fraunces', serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.reveal-caption {
+  color: var(--ink-dim);
+  font-size: 14px;
+  margin: 4px 0 0;
+  min-height: 18px;
+}
+
+/* ---- History ---- */
+.history-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.history-head h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.history-count {
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  animation: rise 0.4s ease both;
+}
+
+.history-heart {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-heart svg { width: 100%; height: 100%; }
+
+.history-heart-pct {
+  position: absolute;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--bg);
+}
+
+.history-pair {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-names {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-date {
+  font-size: 12px;
+  color: var(--ink-dim);
+  margin-top: 2px;
+}
+
+.history-pct-big {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.history-empty {
+  text-align: center;
+  padding: 36px 10px;
+  color: var(--ink-dim);
+}
+
+.history-empty p { margin: 0; }
+.history-empty-sub { font-size: 13px; margin-top: 6px; opacity: 0.8; }
+
+/* ===================== TOAST ===================== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -8px rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 50;
+  max-width: 90%;
+  text-align: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 360px) {
+  .gate-title { font-size: 28px; }
+  .hero-title { font-size: 22px; }
+  .reveal-percent-wrap { width: 160px; height: 160px; }
+  .reveal-percent { font-size: 38px; }
+}

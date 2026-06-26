@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title id="pageTitle">Match Fortune</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ===== HEADER ===== -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-glyph">✦</span>
+      <span class="brand-text" data-i18n="brand">Match Fortune</span>
+    </div>
+    <div class="me-badge" id="meBadge">
+      <span class="me-dot"></span>
+      <span id="meName" data-i18n="me_loading">...</span>
+    </div>
+  </header>
+
+  <!-- ===== NAME GATE (isim yoksa once bu gosterilir) ===== -->
+  <section class="gate" id="gate">
+    <div class="gate-card">
+      <p class="gate-eyebrow" data-i18n="gate_eyebrow">before we start</p>
+      <h1 class="gate-title" data-i18n="gate_title">What's your name?</h1>
+      <p class="gate-sub" data-i18n="gate_sub">You'll appear in the fortune with this name.</p>
+      <input
+        id="nameInput"
+        class="gate-input"
+        type="text"
+        maxlength="64"
+        placeholder="Type your name..."
+        data-i18n-placeholder="gate_placeholder"
+        autocomplete="off"
+      />
+      <button class="btn btn-primary" id="saveNameBtn" data-i18n="gate_continue">Continue</button>
+      <p class="gate-error" id="gateError"></p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN (isim kaydedildikten sonra gosterilir) ===== -->
+  <main class="main hidden" id="main">
+
+    <!-- Gelen davet varsa: otomatik test ekrani -->
+    <section class="reveal hidden" id="revealSection">
+      <div class="reveal-card" id="revealCard">
+        <p class="reveal-eyebrow" data-i18n="reveal_eyebrow">Reading the stars</p>
+        <div class="reveal-names">
+          <span id="revealName1">--</span>
+          <span class="reveal-x">✦</span>
+          <span id="revealName2">--</span>
+        </div>
+        <div class="reveal-percent-wrap">
+          <svg class="reveal-ring" viewBox="0 0 200 200">
+            <circle class="ring-track" cx="100" cy="100" r="86"></circle>
+            <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="86"></circle>
+          </svg>
+          <div class="reveal-percent" id="revealPercent">0%</div>
+        </div>
+        <p class="reveal-caption" id="revealCaption" data-i18n="reveal_calculating">The stars are calculating...</p>
+        <button class="btn btn-ghost hidden" id="reInviteBtn" data-i18n="reinvite_btn">Invite Someone Else</button>
+      </div>
+    </section>
+
+    <!-- Davet yoksa: ana ekran -->
+    <section class="hero" id="heroSection">
+      <div class="hero-card">
+        <p class="hero-eyebrow" data-i18n="hero_eyebrow">pure luck, pure fun</p>
+        <h2 class="hero-title">
+          <span data-i18n="hero_title_l1">Invite someone,</span><br/>
+          <span data-i18n="hero_title_l2">see your match.</span>
+        </h2>
+        <p class="hero-sub" data-i18n="hero_sub">When your friend taps the link and types their name, your match percentage shows up instantly.</p>
+        <button class="btn btn-primary btn-large" id="inviteBtn">
+          <span class="btn-icon">✦</span> <span data-i18n="invite_btn">Invite a Friend</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Gecmis eslesmeler -->
+    <section class="history" id="historySection">
+      <div class="history-head">
+        <h3 data-i18n="history_title">Past Fortunes</h3>
+        <span class="history-count" id="historyCount"></span>
+      </div>
+      <div class="history-list" id="historyList">
+        <!-- JS ile doldurulacak -->
+      </div>
+      <div class="history-empty hidden" id="historyEmpty">
+        <p data-i18n="history_empty_title">No fortunes told yet.</p>
+        <p class="history-empty-sub" data-i18n="history_empty_sub">Be the first — invite someone.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast bildirim -->
+  <div class="toast hidden" id="toast"></div>
+
+</div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
