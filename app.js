@@ -297,7 +297,7 @@ function matchCaption(pct) {
 // ---------------------------------------------------------------------------
 // 4) Davet linki olusturma (hem hero hem reveal sonrasi buton icin)
 // ---------------------------------------------------------------------------
-const BOT_USERNAME = "senin_bot_kullanici_adin_bot"; // <-- @ olmadan, BotFather'dan aldigin
+const BOT_USERNAME = "Relationship9bot"; // <-- @ olmadan, BotFather'dan aldigin
 
 function shareInviteLink() {
   if (!TG_ID) {
